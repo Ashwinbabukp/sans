@@ -131,7 +131,7 @@ const navItems: Array<{ id: Tab; label: string; icon: typeof HomeIcon }> = [
 const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const previewTestAuthEnabled = import.meta.env.DEV && !firebaseAuthConfigured;
+const previewTestAuthEnabled = !firebaseAuthConfigured;
 
 const createPreviewTestUser = (): AuthUser => ({
   uid: "preview-test-user",
@@ -1502,7 +1502,7 @@ function AuthSheet({
               {!firebaseAuthConfigured ? (
                 <p className="auth-config-note">
                   {previewTestAuthEnabled
-                    ? "Live authentication still needs Firebase keys. The temporary account below only unlocks local preview testing."
+                    ? "Live authentication still needs Firebase keys. The temporary account below only unlocks this browser for demo testing."
                     : "Authentication is ready for a Firebase project connection; no account is simulated in this build."}
                 </p>
               ) : null}
